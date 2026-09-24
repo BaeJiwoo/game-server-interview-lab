@@ -1,0 +1,25 @@
+name: Daily Interview Study
+
+on:
+  schedule:
+    # GitHub Actions cron is UTC.
+    # 22:00 UTC = 07:00 KST (next day)
+    - cron: "0 22 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  create-daily-study:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create adaptive daily interview issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = require('./.github/scripts/create-daily-study.js');
+            await run({ github, context, core });

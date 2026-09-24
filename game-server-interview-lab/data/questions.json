@@ -1,0 +1,892 @@
+[
+  {
+    "id": "c++-01",
+    "domain": "C++",
+    "level": 1,
+    "question": "Stack과 Heap의 차이를 서버 프로그래머 관점에서 설명해보세요.",
+    "followups": [
+      "객체 수명은 각각 어떻게 결정되나요?",
+      "힙 할당이 빈번하면 어떤 문제가 생길 수 있나요?"
+    ],
+    "keywords": [
+      "lifetime",
+      "allocation",
+      "fragmentation"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c++-02",
+    "domain": "C++",
+    "level": 2,
+    "question": "RAII가 무엇이며 게임 서버에서 왜 중요한가요?",
+    "followups": [
+      "예외가 발생해도 자원 해제가 보장되는 이유는?",
+      "socket이나 lock에도 적용할 수 있나요?"
+    ],
+    "keywords": [
+      "RAII",
+      "destructor",
+      "resource"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c++-03",
+    "domain": "C++",
+    "level": 2,
+    "question": "copy constructor와 move constructor의 차이를 설명해보세요.",
+    "followups": [
+      "std::move는 실제로 무엇을 하나요?",
+      "moved-from 객체는 어떤 상태인가요?"
+    ],
+    "keywords": [
+      "move",
+      "copy",
+      "rvalue"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c++-04",
+    "domain": "C++",
+    "level": 2,
+    "question": "std::vector가 capacity를 초과하면 내부에서 어떤 일이 일어나나요?",
+    "followups": [
+      "iterator가 무효화될 수 있는 이유는?",
+      "서버 hot path에서 어떤 문제가 생길 수 있나요?"
+    ],
+    "keywords": [
+      "vector",
+      "capacity",
+      "reallocation"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c++-05",
+    "domain": "C++",
+    "level": 2,
+    "question": "shared_ptr과 unique_ptr의 차이와 선택 기준을 설명해보세요.",
+    "followups": [
+      "shared_ptr 순환 참조는 왜 생기나요?",
+      "weak_ptr은 언제 쓰나요?"
+    ],
+    "keywords": [
+      "smart-pointer",
+      "reference-count"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c++-06",
+    "domain": "C++",
+    "level": 3,
+    "question": "virtual 함수 호출이 일반 함수 호출과 어떻게 다른지 설명해보세요.",
+    "followups": [
+      "vtable/vptr은 보통 어떤 역할을 하나요?",
+      "가상 소멸자는 왜 필요한가요?"
+    ],
+    "keywords": [
+      "virtual",
+      "vtable",
+      "polymorphism"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c++-07",
+    "domain": "C++",
+    "level": 3,
+    "question": "서버의 세션 객체 수명을 안전하게 관리하는 방법을 설계해보세요.",
+    "followups": [
+      "비동기 I/O가 진행 중인데 세션이 종료되면?",
+      "shared_ptr을 무조건 쓰는 것이 좋은가요?"
+    ],
+    "keywords": [
+      "session",
+      "lifetime",
+      "async-io"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "os-concurrency-01",
+    "domain": "OS/Concurrency",
+    "level": 1,
+    "question": "Process와 Thread의 차이를 설명해보세요.",
+    "followups": [
+      "Thread끼리 공유하는 것과 공유하지 않는 것은?",
+      "Context switch 비용은 왜 생기나요?"
+    ],
+    "keywords": [
+      "process",
+      "thread",
+      "context-switch"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "os-concurrency-02",
+    "domain": "OS/Concurrency",
+    "level": 2,
+    "question": "Mutex와 Spin Lock은 어떤 상황에서 각각 적합한가요?",
+    "followups": [
+      "임계영역이 길면 spin lock이 왜 불리한가요?",
+      "게임 서버의 어떤 구간에 적용할 수 있나요?"
+    ],
+    "keywords": [
+      "mutex",
+      "spinlock",
+      "contention"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "os-concurrency-03",
+    "domain": "OS/Concurrency",
+    "level": 2,
+    "question": "Race Condition의 예시를 하나 들고 해결 방법을 설명해보세요.",
+    "followups": [
+      "atomic만으로 해결되지 않는 경우는?",
+      "lock-free가 항상 더 빠른가요?"
+    ],
+    "keywords": [
+      "race",
+      "atomic",
+      "lock"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "os-concurrency-04",
+    "domain": "OS/Concurrency",
+    "level": 2,
+    "question": "Deadlock의 4가지 조건과 예방 방법을 설명해보세요.",
+    "followups": [
+      "락 순서 규칙은 어떻게 적용하나요?",
+      "실서비스에서 deadlock을 어떻게 추적하나요?"
+    ],
+    "keywords": [
+      "deadlock",
+      "lock-order"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "os-concurrency-05",
+    "domain": "OS/Concurrency",
+    "level": 2,
+    "question": "Thread Pool을 사용하는 이유를 설명해보세요.",
+    "followups": [
+      "스레드가 너무 많으면 왜 느려지나요?",
+      "worker 수는 어떻게 정하겠나요?"
+    ],
+    "keywords": [
+      "thread-pool",
+      "context-switch",
+      "worker"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "os-concurrency-06",
+    "domain": "OS/Concurrency",
+    "level": 3,
+    "question": "CAS(Compare-And-Swap)가 무엇이며 어떤 동시성 구조에 쓰이나요?",
+    "followups": [
+      "ABA 문제는 무엇인가요?",
+      "memory ordering을 왜 고려해야 하나요?"
+    ],
+    "keywords": [
+      "CAS",
+      "atomic",
+      "ABA"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "os-concurrency-07",
+    "domain": "OS/Concurrency",
+    "level": 3,
+    "question": "False Sharing이 무엇이며 서버 성능에 어떤 영향을 줄 수 있나요?",
+    "followups": [
+      "CPU cache line과 어떤 관계인가요?",
+      "어떻게 완화할 수 있나요?"
+    ],
+    "keywords": [
+      "cache-line",
+      "false-sharing"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "network-01",
+    "domain": "Network",
+    "level": 1,
+    "question": "TCP와 UDP의 차이를 게임 서버 관점에서 설명해보세요.",
+    "followups": [
+      "실시간 위치 동기화에는 무엇을 선택하겠나요?",
+      "신뢰성이 필요한 UDP는 어떻게 보완할 수 있나요?"
+    ],
+    "keywords": [
+      "TCP",
+      "UDP",
+      "reliability"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "network-02",
+    "domain": "Network",
+    "level": 2,
+    "question": "TCP에서 패킷 경계가 보존되지 않는다는 말은 무슨 뜻인가요?",
+    "followups": [
+      "한 번의 send와 한 번의 recv가 대응하지 않는 이유는?",
+      "메시지 framing은 어떻게 구현하나요?"
+    ],
+    "keywords": [
+      "stream",
+      "framing",
+      "partial-recv"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "network-03",
+    "domain": "Network",
+    "level": 2,
+    "question": "3-way handshake와 4-way close를 설명해보세요.",
+    "followups": [
+      "TIME_WAIT은 왜 존재하나요?",
+      "서버 재시작 후 bind 실패와 어떤 관계가 있나요?"
+    ],
+    "keywords": [
+      "handshake",
+      "TIME_WAIT"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "network-04",
+    "domain": "Network",
+    "level": 2,
+    "question": "네트워크 byte order와 endian을 설명해보세요.",
+    "followups": [
+      "왜 변환이 필요한가요?",
+      "protobuf 같은 직렬화 도구를 쓰면 무엇이 달라지나요?"
+    ],
+    "keywords": [
+      "endian",
+      "serialization"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "network-05",
+    "domain": "Network",
+    "level": 3,
+    "question": "IOCP의 동작 흐름을 WSARecv 호출부터 완료 처리까지 설명해보세요.",
+    "followups": [
+      "WSARecv가 비동기라고 해서 스레드가 새로 생기나요?",
+      "OVERLAPPED 객체 수명은 어떻게 관리하나요?"
+    ],
+    "keywords": [
+      "IOCP",
+      "WSARecv",
+      "OVERLAPPED"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "network-06",
+    "domain": "Network",
+    "level": 3,
+    "question": "epoll의 level-trigger와 edge-trigger 차이를 설명해보세요.",
+    "followups": [
+      "ET에서 read를 EAGAIN까지 해야 하는 이유는?",
+      "IOCP와 철학적으로 어떤 차이가 있나요?"
+    ],
+    "keywords": [
+      "epoll",
+      "LT",
+      "ET",
+      "readiness"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "network-07",
+    "domain": "Network",
+    "level": 3,
+    "question": "느린 클라이언트가 서버의 send queue를 계속 쌓이게 할 때 어떻게 처리하겠나요?",
+    "followups": [
+      "backpressure 정책은?",
+      "disconnect 기준은 어떻게 정하나요?"
+    ],
+    "keywords": [
+      "backpressure",
+      "send-queue",
+      "slow-client"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "game-server-01",
+    "domain": "Game Server",
+    "level": 1,
+    "question": "Stateful 게임 서버와 Stateless API 서버의 차이를 설명해보세요.",
+    "followups": [
+      "두 서버를 함께 쓰는 구조는 어떻게 만들겠나요?",
+      "게임 결과는 어디에서 저장하나요?"
+    ],
+    "keywords": [
+      "stateful",
+      "stateless",
+      "API"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "game-server-02",
+    "domain": "Game Server",
+    "level": 2,
+    "question": "Tick 기반 게임 서버가 무엇인지 설명해보세요.",
+    "followups": [
+      "Tick rate를 높이면 어떤 비용이 생기나요?",
+      "느린 로직이 한 Tick을 초과하면 어떻게 하나요?"
+    ],
+    "keywords": [
+      "tick",
+      "game-loop",
+      "latency"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "game-server-03",
+    "domain": "Game Server",
+    "level": 2,
+    "question": "Room 단위 Job Queue 구조를 쓰는 이유를 설명해보세요.",
+    "followups": [
+      "락을 줄이는 데 어떻게 도움이 되나요?",
+      "Room 하나가 과부하되면 어떻게 되나요?"
+    ],
+    "keywords": [
+      "job-queue",
+      "room",
+      "serialization"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "game-server-04",
+    "domain": "Game Server",
+    "level": 2,
+    "question": "Authoritative Server가 무엇이며 치팅 방지와 어떤 관련이 있나요?",
+    "followups": [
+      "클라이언트 예측과 충돌하지 않나요?",
+      "서버가 검증해야 할 정보는 무엇인가요?"
+    ],
+    "keywords": [
+      "authoritative",
+      "anti-cheat"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "game-server-05",
+    "domain": "Game Server",
+    "level": 2,
+    "question": "유저 재접속 시스템을 설계해보세요.",
+    "followups": [
+      "세션과 플레이어 상태를 어떻게 구분하나요?",
+      "재접속 토큰은 어떻게 검증하나요?"
+    ],
+    "keywords": [
+      "reconnect",
+      "session",
+      "player-state"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "game-server-06",
+    "domain": "Game Server",
+    "level": 3,
+    "question": "매치메이킹 서버와 게임 서버의 역할을 분리해 설계해보세요.",
+    "followups": [
+      "게임 서버 할당은 누가 하나요?",
+      "할당 직후 게임 서버가 죽으면 어떻게 하나요?"
+    ],
+    "keywords": [
+      "matchmaking",
+      "allocation",
+      "failure"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "game-server-07",
+    "domain": "Game Server",
+    "level": 3,
+    "question": "익스트랙션 슈터의 한 판을 기준으로 서버 데이터 흐름을 설계해보세요.",
+    "followups": [
+      "입장 전 인벤토리는 누가 검증하나요?",
+      "탈출/사망 결과 저장에 실패하면 어떻게 하나요?"
+    ],
+    "keywords": [
+      "extraction",
+      "inventory",
+      "result"
+    ],
+    "target_minutes": 25
+  },
+  {
+    "id": "db-redis-01",
+    "domain": "DB/Redis",
+    "level": 1,
+    "question": "DB Index가 무엇이며 조회를 빠르게 만드는 원리를 설명해보세요.",
+    "followups": [
+      "인덱스가 많으면 왜 문제가 되나요?",
+      "복합 인덱스 순서는 왜 중요한가요?"
+    ],
+    "keywords": [
+      "index",
+      "B-tree",
+      "write-cost"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "db-redis-02",
+    "domain": "DB/Redis",
+    "level": 2,
+    "question": "Transaction의 ACID를 게임 아이템 거래 예시로 설명해보세요.",
+    "followups": [
+      "중간에 서버가 죽으면?",
+      "두 유저가 동시에 같은 자원을 수정하면?"
+    ],
+    "keywords": [
+      "transaction",
+      "ACID",
+      "item"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "db-redis-03",
+    "domain": "DB/Redis",
+    "level": 2,
+    "question": "낙관적 락과 비관적 락의 차이를 설명해보세요.",
+    "followups": [
+      "충돌이 많은 환경에서는 무엇이 유리한가요?",
+      "버전 컬럼은 어떻게 쓰나요?"
+    ],
+    "keywords": [
+      "optimistic",
+      "pessimistic",
+      "lock"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "db-redis-04",
+    "domain": "DB/Redis",
+    "level": 2,
+    "question": "Redis의 String, Hash, Set, Sorted Set을 게임에서 각각 어디에 쓸 수 있나요?",
+    "followups": [
+      "랭킹에는 왜 Sorted Set이 적합한가요?",
+      "Redis를 영구 DB처럼 써도 되나요?"
+    ],
+    "keywords": [
+      "Redis",
+      "Sorted-Set",
+      "ranking"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "db-redis-05",
+    "domain": "DB/Redis",
+    "level": 2,
+    "question": "Cache-Aside 패턴을 설명해보세요.",
+    "followups": [
+      "DB 갱신 후 cache invalidation은 어떻게 하나요?",
+      "cache stampede는 무엇인가요?"
+    ],
+    "keywords": [
+      "cache-aside",
+      "invalidation"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "db-redis-06",
+    "domain": "DB/Redis",
+    "level": 3,
+    "question": "동일한 게임 결과 요청이 두 번 들어왔을 때 중복 보상을 방지해보세요.",
+    "followups": [
+      "idempotency key를 어디에 저장하나요?",
+      "트랜잭션 경계는 어디인가요?"
+    ],
+    "keywords": [
+      "idempotency",
+      "reward",
+      "transaction"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "db-redis-07",
+    "domain": "DB/Redis",
+    "level": 3,
+    "question": "Redis 장애 시에도 로그인/게임 진행을 어느 수준까지 유지할지 정책을 설계해보세요.",
+    "followups": [
+      "fail-open과 fail-closed 중 무엇을 선택하나요?",
+      "Redis가 담당하면 안 되는 데이터는?"
+    ],
+    "keywords": [
+      "redis-failure",
+      "fallback"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "c#-.net-01",
+    "domain": "C#/.NET",
+    "level": 1,
+    "question": "C#의 value type과 reference type 차이를 설명해보세요.",
+    "followups": [
+      "boxing은 무엇인가요?",
+      "GC와 어떤 관계가 있나요?"
+    ],
+    "keywords": [
+      "value-type",
+      "reference-type",
+      "boxing"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c#-.net-02",
+    "domain": "C#/.NET",
+    "level": 2,
+    "question": "async/await의 동작을 설명해보세요.",
+    "followups": [
+      "async를 붙이면 새 스레드가 생기나요?",
+      "await 앞뒤 코드는 어떻게 이어지나요?"
+    ],
+    "keywords": [
+      "async",
+      "await",
+      "state-machine"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c#-.net-03",
+    "domain": "C#/.NET",
+    "level": 2,
+    "question": "Task와 Thread의 차이를 설명해보세요.",
+    "followups": [
+      "I/O bound 작업에서 Task가 유리한 이유는?",
+      "Task.Run은 언제 쓰나요?"
+    ],
+    "keywords": [
+      "Task",
+      "Thread",
+      "ThreadPool"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c#-.net-04",
+    "domain": "C#/.NET",
+    "level": 2,
+    "question": "ASP.NET Core의 Singleton, Scoped, Transient DI lifetime 차이를 설명해보세요.",
+    "followups": [
+      "DbContext는 왜 보통 Scoped인가요?",
+      "Singleton이 Scoped 서비스를 직접 참조하면 어떤 문제가 있나요?"
+    ],
+    "keywords": [
+      "DI",
+      "Scoped",
+      "Singleton"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c#-.net-05",
+    "domain": "C#/.NET",
+    "level": 2,
+    "question": "ASP.NET Core 요청이 들어와 Controller까지 도달하는 흐름을 설명해보세요.",
+    "followups": [
+      "Middleware 순서는 왜 중요한가요?",
+      "인증과 인가는 어디에서 처리되나요?"
+    ],
+    "keywords": [
+      "middleware",
+      "pipeline",
+      "controller"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c#-.net-06",
+    "domain": "C#/.NET",
+    "level": 2,
+    "question": "JWT 기반 인증의 전체 흐름을 설명해보세요.",
+    "followups": [
+      "Access Token 탈취에 어떻게 대응하나요?",
+      "로그아웃은 stateless 구조에서 어떻게 처리하나요?"
+    ],
+    "keywords": [
+      "JWT",
+      "authentication",
+      "token"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "c#-.net-07",
+    "domain": "C#/.NET",
+    "level": 3,
+    "question": "GC로 인해 게임 API 서버 latency spike가 발생한다고 가정할 때 어떻게 조사하겠나요?",
+    "followups": [
+      "allocation을 어떻게 줄이나요?",
+      "Server GC와 Workstation GC 차이는 조사해봤나요?"
+    ],
+    "keywords": [
+      "GC",
+      "latency",
+      "allocation"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "system-design-01",
+    "domain": "System Design",
+    "level": 1,
+    "question": "게임 로그인 시스템을 Client부터 DB까지 설계해보세요.",
+    "followups": [
+      "비밀번호는 어떻게 저장하나요?",
+      "중복 로그인은 어떻게 처리하나요?"
+    ],
+    "keywords": [
+      "login",
+      "auth",
+      "DB"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "system-design-02",
+    "domain": "System Design",
+    "level": 2,
+    "question": "채팅 서버를 설계해보세요.",
+    "followups": [
+      "채널이 커지면 어떻게 분산하나요?",
+      "욕설 필터나 신고 시스템은 어디에 두나요?"
+    ],
+    "keywords": [
+      "chat",
+      "channel",
+      "scale"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "system-design-03",
+    "domain": "System Design",
+    "level": 2,
+    "question": "친구 시스템의 온라인 상태 표시를 설계해보세요.",
+    "followups": [
+      "접속 상태를 DB에 매번 저장할 건가요?",
+      "서버가 비정상 종료되면 상태를 어떻게 정리하나요?"
+    ],
+    "keywords": [
+      "presence",
+      "friend",
+      "TTL"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "system-design-04",
+    "domain": "System Design",
+    "level": 2,
+    "question": "랭킹 시스템을 설계해보세요.",
+    "followups": [
+      "실시간 랭킹과 정산 랭킹은 어떻게 다르게 설계하나요?",
+      "동점 처리는?"
+    ],
+    "keywords": [
+      "ranking",
+      "Redis",
+      "snapshot"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "system-design-05",
+    "domain": "System Design",
+    "level": 3,
+    "question": "게임 서버가 종료 결과를 API 서버에 전달하는 구조를 설계해보세요.",
+    "followups": [
+      "HTTP 호출 실패 시?",
+      "중복 결과 전달 시?",
+      "게임 서버가 결과 전달 전에 죽으면?"
+    ],
+    "keywords": [
+      "result",
+      "retry",
+      "idempotency",
+      "outbox"
+    ],
+    "target_minutes": 25
+  },
+  {
+    "id": "system-design-06",
+    "domain": "System Design",
+    "level": 3,
+    "question": "동접이 10배 증가했을 때 게임 서버 구조에서 먼저 확인할 병목을 설명해보세요.",
+    "followups": [
+      "CPU, network, DB 중 무엇부터 보나요?",
+      "측정 없이 scale-out부터 하면 안 되는 이유는?"
+    ],
+    "keywords": [
+      "bottleneck",
+      "metrics",
+      "scale"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "system-design-07",
+    "domain": "System Design",
+    "level": 3,
+    "question": "운영 중 패킷 처리 지연이 간헐적으로 500ms까지 증가합니다. 조사 순서를 말해보세요.",
+    "followups": [
+      "어떤 metric/log가 필요하나요?",
+      "lock contention인지 GC인지 어떻게 구분하나요?"
+    ],
+    "keywords": [
+      "latency",
+      "observability",
+      "profiling"
+    ],
+    "target_minutes": 25
+  },
+  {
+    "id": "data-structures-01",
+    "domain": "Data Structures",
+    "level": 1,
+    "question": "Array와 Linked List의 차이를 설명하고 서버에서 선택 기준을 말해보세요.",
+    "followups": [
+      "cache locality는 무엇인가요?",
+      "중간 삽입이 많다는 이유만으로 linked list를 고르면 안 되는 이유는?"
+    ],
+    "keywords": [
+      "array",
+      "linked-list",
+      "cache"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "data-structures-02",
+    "domain": "Data Structures",
+    "level": 2,
+    "question": "Hash Table의 평균 O(1)이 어떤 가정 위에서 성립하는지 설명해보세요.",
+    "followups": [
+      "collision이 많아지면?",
+      "좋은 hash 함수의 조건은?"
+    ],
+    "keywords": [
+      "hash",
+      "collision",
+      "load-factor"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "data-structures-03",
+    "domain": "Data Structures",
+    "level": 2,
+    "question": "Priority Queue를 게임 서버에서 어디에 사용할 수 있나요?",
+    "followups": [
+      "timer queue에 쓸 수 있나요?",
+      "삭제가 잦으면 어떤 대안이 있나요?"
+    ],
+    "keywords": [
+      "priority-queue",
+      "heap",
+      "timer"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "data-structures-04",
+    "domain": "Data Structures",
+    "level": 2,
+    "question": "Ring Buffer가 네트워크 수신 버퍼에 적합한 이유를 설명해보세요.",
+    "followups": [
+      "wrap-around는 어떻게 처리하나요?",
+      "linear buffer와 비교한 장단점은?"
+    ],
+    "keywords": [
+      "ring-buffer",
+      "recv-buffer"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "data-structures-05",
+    "domain": "Data Structures",
+    "level": 2,
+    "question": "Queue와 Stack의 차이를 실제 서버 처리 흐름으로 설명해보세요.",
+    "followups": [
+      "Job Queue는 왜 FIFO인 경우가 많나요?",
+      "LIFO가 유리한 사례가 있나요?"
+    ],
+    "keywords": [
+      "queue",
+      "stack",
+      "job"
+    ],
+    "target_minutes": 15
+  },
+  {
+    "id": "data-structures-06",
+    "domain": "Data Structures",
+    "level": 3,
+    "question": "Timer 시스템을 자료구조 관점에서 설계해보세요.",
+    "followups": [
+      "min-heap, timing wheel을 비교해보세요.",
+      "수십만 타이머가 있으면?"
+    ],
+    "keywords": [
+      "timer",
+      "heap",
+      "timing-wheel"
+    ],
+    "target_minutes": 20
+  },
+  {
+    "id": "data-structures-07",
+    "domain": "Data Structures",
+    "level": 3,
+    "question": "공간 분할이 필요한 게임에서 QuadTree를 언제 사용하겠나요?",
+    "followups": [
+      "grid와 비교하면?",
+      "오브젝트가 계속 움직이면 어떤 비용이 생기나요?"
+    ],
+    "keywords": [
+      "quadtree",
+      "spatial",
+      "grid"
+    ],
+    "target_minutes": 20
+  }
+]

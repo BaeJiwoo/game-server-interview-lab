@@ -1,0 +1,50 @@
+name: Daily interview study
+description: 수동으로 오늘의 기술 면접 학습 Issue를 만들 때 사용합니다.
+title: "[Daily] "
+labels: []
+body:
+  - type: dropdown
+    id: domain
+    attributes:
+      label: Domain
+      options:
+        - C++
+        - OS/Concurrency
+        - Network
+        - Game Server
+        - DB/Redis
+        - C#/.NET
+        - System Design
+        - Data Structures
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      placeholder: 오늘 연습할 질문
+    validations:
+      required: true
+
+  - type: textarea
+    id: answer
+    attributes:
+      label: 20초 답변
+      placeholder: 결론부터 짧게 답합니다.
+
+  - type: textarea
+    id: deep
+    attributes:
+      label: 90초 / Deep Dive
+      placeholder: 내부 동작, trade-off, 게임 서버 예시까지 설명합니다.
+
+  - type: dropdown
+    id: score
+    attributes:
+      label: Self Score
+      options:
+        - "0 - 모름"
+        - "1 - 정의"
+        - "2 - 원리"
+        - "3 - 실전"

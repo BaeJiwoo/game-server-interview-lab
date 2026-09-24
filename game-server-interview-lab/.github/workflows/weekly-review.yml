@@ -1,0 +1,24 @@
+name: Weekly Interview Review
+
+on:
+  schedule:
+    # Sunday 22:05 UTC = Monday 07:05 KST
+    - cron: "5 22 * * 0"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+jobs:
+  weekly-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create weekly review issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const run = require('./.github/scripts/create-weekly-review.js');
+            await run({ github, context, core });

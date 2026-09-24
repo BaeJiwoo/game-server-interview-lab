@@ -1,0 +1,32 @@
+name: Mock interview
+description: 30~60분 모의면접 결과를 기록합니다.
+title: "[Mock] "
+labels: []
+body:
+  - type: dropdown
+    id: duration
+    attributes:
+      label: Duration
+      options:
+        - 30 minutes
+        - 60 minutes
+    validations:
+      required: true
+
+  - type: textarea
+    id: questions
+    attributes:
+      label: Questions
+      placeholder: 받은 질문을 적습니다.
+
+  - type: textarea
+    id: weak
+    attributes:
+      label: Weak Points
+      placeholder: 막혔던 질문과 이유
+
+  - type: textarea
+    id: action
+    attributes:
+      label: Next Actions
+      placeholder: 다음 주까지 보완할 항목
